@@ -1,0 +1,26 @@
+{
+  "name": "api-proyecto",
+  "version": "1.0.0",
+  "description": "API PROYECTO EN EL SENA",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Natalia",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongo": "^0.1.0",
+    "mongo-parser": "^1.0.2",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.1",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
