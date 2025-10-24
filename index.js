@@ -11,7 +11,10 @@ const postRoute=require('./routes/post');
 app.use('/servicios', postRoute);
 
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect('mongodb+srv://nataliameneses243_db_user:rH5RVv2uuWgnMcAl@cluster0.iwncttw.mongodb.net/prueba2?retryWrites=true&w=majority&appName=Cluster0',
+{
+
+});
 
 const connection = mongoose.connection //creo una conexion a la base de datos.
 connection.once('open', () => {
@@ -22,7 +25,3 @@ connection.once('open', () => {
 
 
 app.listen(10000); //Puerto por donde escucha el servidor.
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
-});
