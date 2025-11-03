@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel de productos</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+        <h1>Gestion de Productos</h1>
+        <button id="cerrarSesion">Cerrar sesion</button>
+    </header>
+
+    <section>
+        <form id="formProducto">
+            <input type="text" id="nombreProducto" placeholder="Nombre" required>
+            <input type="number" id="precioProducto" placeholder="Precio" required>
+            <input type="textarea" id="descripcionProducto" placeholder="Descripcion" required>
+            <button type="submit">Agregar</button>
+        </form>
+
+        <h2>listado</h2>
+        <ul id="listaProductos"></ul>
+    </section>
+
+    <script src="app.js"></script>
+
+
+
+  </body>
+</html>

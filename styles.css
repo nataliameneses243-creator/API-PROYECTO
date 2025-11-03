@@ -1,0 +1,237 @@
+/* Paleta de colores */
+:root {
+    --bg: #0f172a;
+    --card: rgba(255, 255, 255, 0.05);
+    --accent: #38bdf8; /*Azul claro*/
+    --accent-hover: #0ea5e9;
+    --text: #e2e8f0;
+    --text-muted: $94a3b8;
+    --error: #ef4444;
+    --sucess: #22c55e;
+    --radius: 12px;
+    --shawow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    --transition: all 0.25 ease
+}
+
+/* Estilos globales */
+
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", systyem-ui, sans-serif;
+}
+
+body{
+    background: linear-grandient(135deg, #0f172a, #1e293b);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container
+{
+
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shawow);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease;
+}
+
+h1,h2{
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+input{
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2rem);
+    border-radius: var(--radius);
+    padding: 0.8rem 1rem;
+    color: var(--text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.9rem 1 rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+
+}
+
+button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(14, 165, 223, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#toggleRegistro {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+#toggleRegistro:hover {
+    color: var(--accent-hover);
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* Dashboard*/
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    padding: 1.2rem 2rem;
+    box-shadow: var(--shawow);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+header h1 {
+    color: var(--accent);
+    font-size: 1.6rem;
+}
+
+#cerrarSesion {
+    background: var(--error);
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+}
+
+section{
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 800px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shawow);
+    animation: fadeInUp 0.8s ease;
+}
+
+/* FORM PRODUCTOS*/
+
+#formProducto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#formProducto button{
+    grid-column: 1 / -1;
+}
+
+/* LISTA DE PRODUCTOS*/
+
+#listaProductos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#listaProductos li {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+#listaProductos li:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-3px);
+}
+
+#listaProductos li button {
+    background: var(--error);
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+    transition: var(--transition);
+}
+
+#listaProductos li button:hover {
+    background: #dc2626;
+}
+
+/* ANIMACIONES */
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    body{
+        padding: 1rem;
+    }
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    section {
+        padding: 1.5rem;
+    }
+}

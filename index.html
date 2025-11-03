@@ -1,0 +1,32 @@
+!<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inicio de sesion</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="login-container">
+        <h1>Iniciar sesion</h1>
+<form action="post" id="formlogin">
+    <input type="email" id="correo" placeholder="correo" required>
+    <input type="password" id="password" placeholder="password" required>
+    <button type="submit">Ingresar</button>
+</form>
+
+<p>No tienes cuenta?
+    <a href="#" id="toggleregistro">Registrate aquí</a>
+</p>
+
+<form id="formRegistro" class="oculto">
+<input type="text" id="nombre" placeholder="Nombre completo" required>
+<input type="email" id="correoReg" placeholder="Correo" required>
+<input type="password" id="passwordReg" placeholder="Password" required>
+<button type="submit">Registrarme</button>
+</form>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
