@@ -19,7 +19,7 @@ const alerta = (mensaje, tipo="info") => {
     const div = document.createElement("div");
     div.textContent = mensaje;
     div.style.position = "fixed";
-    div.style.botton = "20px";
+    div.style.bottom = "20px";
     div.style.left = "50%"
     div.style.transform = "translateX(-50%)";
     div.style.background = colores[tipo];
@@ -31,19 +31,19 @@ const alerta = (mensaje, tipo="info") => {
     div.style.zIndex = "9999";
 
     document.body.appendChild(div);
-    setTimeout(()=> div, remove(), 10000);
+    setTimeout(()=> div.remove(), 10000);
 };
 
 /* AUTENTICACION*/
 
 const formLogin = document.getElementById("formlogin");
-const formregistro = document.getElementById("formRegistro");
-const toggleregistro = document.getElementById("toggleRegistro");
+const formRegistro = document.getElementById("formRegistro");
+const toggleRegistro = document.getElementById("toggleregistro");
 
-if (toggleregistro) {
-    toggleregistro.addEventListener("click", (e) => {
+if (toggleRegistro) {
+    toggleRegistro.addEventListener("click", (e) => {
         e.preventDefault();
-        formregistro.classList.toggle("oculto");
+        formRegistro.classList.toggle("oculto");
         formLogin.classList.toggle("oculto");
     });
 }
@@ -51,8 +51,8 @@ if (toggleregistro) {
 
 /* REGISTRO DE USUARIO*/
 
-if (formregistro) {
-    formregistro.addEventListener("submit", async (e) => {
+if (formRegistro) {
+    formRegistro.addEventListener("submit", async (e) => {
         e.preventDefault();
         const nombre = document.getElementById("nombre").value;
         const correo = document.getElementById("correoReg").value;
@@ -90,7 +90,7 @@ if(formLogin) {
         try {
             const res = await fetch(`${API_URL}/usuarios/login`,{
                 method: "POST",
-                headers: {"Content-Type": "aplication/json"},
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({correo,password}),
             });
             const data = await res.json();
@@ -98,7 +98,7 @@ if(formLogin) {
             if (res.ok && data.token) {
                 guardarToken(data.token);
                 alerta("inicio de sesion exitoso", "success");
-                setTimeout(() => (window.location.href) = "dashboard.html", 1000);
+                setTimeout(() => window.location.href = "dashboard.html", 1000);
             } else {
                 alerta(data.mensaje || "Credenciales Invalidas", "error");
             }
@@ -111,8 +111,8 @@ if(formLogin) {
 
 /* Dashboard CRUD productos*/
 
-const formProducto = document.getElementById("formProucto");
-const listaProductos = documents.getElementById("listaProductos");
+const formProducto = document.getElementById("formProducto");
+const listaProductos = document.getElementById("listaProductos");
 const btnCerrar = document.getElementById("cerrarSesion");
 
 if(btnCerrar){
@@ -179,7 +179,7 @@ if(formProducto) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${obtenerToken()}`,
+                    Authorization: `Bearer ${obtenerToken()}` 
                 },
                 body: JSON.stringify({nombre, precio, descripcion}),
             });
@@ -206,7 +206,7 @@ async function eliminarProducto(id) {
     try{
         const res = await fetch(`${API_URL}/productos/${id}`,{
             method: "DELETE",
-            headers: { Authorization: `Bearer %{obtenerToken()}`},
+            headers: { Authorization: `Bearer ${obtenerToken()}`},
         });
         const data = await res.json();
         if (res.ok) {
@@ -231,7 +231,7 @@ async function editarProducto(id) {
 
     try{
         const res = await fetch (`${API_URL}/productos/${id}`,{
-            method= "PUT",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${obtenerToken()}`,
@@ -245,7 +245,7 @@ async function editarProducto(id) {
         const data = await res.json();
         if(res.ok) {
             alerta("Producto actualizado", "success");
-            cargarProductos;
+            cargarProductos();
         } else {
             alerta(data.mensaje || "Error al actualizar", "error");
         }
